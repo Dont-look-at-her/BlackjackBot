@@ -1285,7 +1285,7 @@ class SplitHandButtonView(discord.ui.View):
 # Rematch button
 class RematchView(discord.ui.View):
     def __init__(self, bet_amount, original_user_id):
-        super().__init__(timeout=300)  # 5 minute timeout
+        super().__init__(timeout=30)  # 5 minute timeout
         self.bet_amount = bet_amount
         self.original_user_id = original_user_id
 
