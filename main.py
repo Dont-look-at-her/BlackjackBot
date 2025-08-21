@@ -180,16 +180,16 @@ class BlackjackGame:
         player_score = calculate_score(self.player_hand)
         dealer_score = calculate_score(self.dealer_hand)
 
-        if player_score > 21:
+        if player_score == 21 and len(self.player_hand) == 2:
+            if dealer_score == 21 and len(self.dealer_hand) == 2:
+                return "push"  # Both have blackjack
+            return "blackjack"  # Player has blackjack, dealer doesn't
+        elif dealer_score == 21 and len(self.dealer_hand) == 2:
+            return "dealer_blackjack"  # Dealer has blackjack, player doesn't
+        elif player_score > 21:
             return "player_bust"
         elif dealer_score > 21:
             return "dealer_bust"
-        elif player_score == 21 and len(self.player_hand) == 2:
-            if dealer_score == 21 and len(self.dealer_hand) == 2:
-                return "push"
-            return "blackjack"
-        elif dealer_score == 21 and len(self.dealer_hand) == 2:
-            return "dealer_blackjack"
         elif player_score > dealer_score:
             return "player_wins"
         elif dealer_score > player_score:
